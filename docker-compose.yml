@@ -29,11 +29,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ./wp-content:/var/www/html/wp-content
     ports:
       - "8080:80"
     depends_on:
       - db
     environment:
       - NODE_ENV=development
+      - NVM_DIR=/root/.nvm
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./nvm:/root/.nvm
+
